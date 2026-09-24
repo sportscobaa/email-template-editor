@@ -19,7 +19,7 @@ A drag-and-drop email builder built with Next.js (App Router + TypeScript). Buil
 
 ```bash
 npm install
-npm run dev      # http://localhost:3000
+npm run dev      # homepage: http://localhost:3000, editor: http://localhost:3000/editor
 ```
 
 Other scripts:
@@ -44,9 +44,12 @@ curl -X POST http://localhost:3000/api/render \
 
 ```
 app/
-  page.tsx               editor page
+  page.tsx               homepage
+  home.css               homepage styles
+  editor/page.tsx        editor page
   api/render/route.ts    template JSON -> HTML endpoint
 components/editor/       editor UI (palette, canvas, properties, output modal)
+components/home/         homepage client components
 lib/email/
   types.ts               template & block types
   blocks.ts              block defaults, starter template, JSON validation

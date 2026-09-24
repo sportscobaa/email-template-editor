@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { normalizeTemplate, starterTemplate } from "@/lib/email/blocks";
 import { editorReducer, initEditorState } from "@/lib/email/editorState";
@@ -122,12 +123,12 @@ export default function EmailEditor() {
   return (
     <div className="editor">
       <header className="topbar">
-        <div className="brand">
+        <Link href="/" className="brand" title="Back to homepage">
           <span className="brand-mark" aria-hidden>
             ✉
           </span>
           <span className="brand-name">Email Template Editor</span>
-        </div>
+        </Link>
         <div className="topbar-group">
           <button
             type="button"
