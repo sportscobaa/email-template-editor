@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CodeTabs, { type CodeTab } from "@/components/home/CodeTabs";
+import PricingCards from "@/components/home/PricingCards";
+import SiteFooter from "@/components/home/SiteFooter";
+import SiteHeader from "@/components/home/SiteHeader";
 import { BLOCK_META, BLOCK_TYPES, DEFAULT_SETTINGS, createBlock, starterTemplate } from "@/lib/email/blocks";
 import { renderBlockRow, renderEmail, resolveSettings } from "@/lib/email/renderer";
 import "./home.css";
@@ -116,28 +119,13 @@ export default function HomePage() {
     <div className="home">
       <div className="h-glow" aria-hidden />
 
-      <header className="h-nav">
-        <Link href="/" className="h-logo">
-          <span className="h-logo-mark" aria-hidden>
-            ✉
-          </span>
-          Email Template Editor
-        </Link>
-        <nav className="h-nav-links" aria-label="Main">
-          <a href="#features">Features</a>
-          <a href="#blocks">Blocks</a>
-          <a href="#code">API</a>
-        </nav>
-        <Link href="/editor" className="h-btn h-btn-light h-btn-sm">
-          Open editor
-        </Link>
-      </header>
+      <SiteHeader />
 
       <main>
         <section className="h-hero">
           <p className="h-badge">
             <span className="h-badge-dot" aria-hidden />
-            Drag-and-drop email builder · Built with Next.js
+            100% free · No sign-up needed
           </p>
           <h1 className="h-title">
             Emails you build
@@ -251,9 +239,21 @@ export default function HomePage() {
           <CodeTabs tabs={exampleCode()} />
         </section>
 
+        <section className="h-section" id="pricing">
+          <p className="h-eyebrow">Pricing</p>
+          <h2 className="h-h2">Free. The whole editor.</h2>
+          <p className="h-sub">
+            Every block, unlimited exports and the render API cost nothing. Paid plans for cloud features are on the way.
+          </p>
+          <PricingCards />
+          <Link href="/pricing" className="h-more">
+            Pricing details and FAQ <span aria-hidden>→</span>
+          </Link>
+        </section>
+
         <section className="h-final">
           <h2 className="h-h2">Build your next email</h2>
-          <p className="h-sub">Opens in your browser. No account needed.</p>
+          <p className="h-sub">Free, in your browser. No account needed.</p>
           <Link href="/editor" className="h-btn h-btn-light">
             Open the editor
             <span aria-hidden>→</span>
@@ -261,10 +261,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="h-footer">
-        <span>Email Template Editor</span>
-        <span>Built with Next.js</span>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
